@@ -5,6 +5,12 @@ import { Check } from 'lucide-react';
 // but the user said "use Base UI as our base set of components".
 import { Button } from '@base-ui/react';
 
+export type PricingFeature = {
+  text: React.ReactNode;
+  icon?: React.ReactNode;
+  hideCheck?: boolean;
+};
+
 export interface PricingCardProps {
   title: string;
   monthlyPrice: string;
@@ -12,7 +18,7 @@ export interface PricingCardProps {
   isYearly: boolean;
   priceModifier: React.ReactNode;
   description: React.ReactNode;
-  features: string[];
+  features: PricingFeature[];
   isDark?: boolean;
   buttonText?: string;
   buttonUrl?: string;
@@ -59,8 +65,15 @@ export function PricingCard({
       <ul className="mb-8 space-y-4 flex-grow">
         {features.map((feature, idx) => (
           <li key={idx} className="flex items-start">
-            <Check className={`flex-shrink-0 w-5 h-5 mr-3 ${isDark ? 'text-emerald-400' : 'text-emerald-500'}`} />
-            <span className={`text-sm leading-tight ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{feature}</span>
+            {!feature.hideCheck && (
+              <Check className={`flex-shrink-0 w-5 h-5 mr-3 mt-0.5 ${isDark ? 'text-emerald-400' : 'text-emerald-500'}`} />
+            )}
+            {feature.icon && (
+              <div className={`mr-2 mt-0.5 flex-shrink-0 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+                {feature.icon}
+              </div>
+            )}
+            <span className={`text-sm leading-tight ${isDark ? 'text-slate-300' : 'text-slate-600'} ${feature.hideCheck && !feature.icon ? 'italic' : ''}`}>{feature.text}</span>
           </li>
         ))}
       </ul>

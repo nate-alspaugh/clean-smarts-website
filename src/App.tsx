@@ -4,6 +4,20 @@ import { useState, useRef, useEffect } from 'react';
 import { Tabs } from '@base-ui/react';
 import { Navbar } from './components/Navbar';
 import { PricingCard } from './components/PricingCard';
+import { 
+  Clock, 
+  AlertCircle, 
+  MessageSquare, 
+  Calendar, 
+  Package, 
+  ClipboardCheck,
+  Landmark,
+  Code,  Wrench, 
+  Video, 
+  Layout, 
+  ClipboardList, 
+  PieChart 
+} from 'lucide-react';
 
 function App() {
   const [isYearly, setIsYearly] = useState(false);
@@ -35,23 +49,23 @@ function App() {
     };
   }, [isYearly]);
   const foundationFeatures = [
-    'Time tracking',
-    'Issue reporting',
-    'Messaging',
-    'Scheduling',
-    'Supply requests',
-    'Inspections'
+    { text: 'Time tracking', icon: <Clock className="w-4 h-4" /> },
+    { text: 'Issue reporting', icon: <AlertCircle className="w-4 h-4" /> },
+    { text: 'Messaging', icon: <MessageSquare className="w-4 h-4" /> },
+    { text: 'Scheduling', icon: <Calendar className="w-4 h-4" /> },
+    { text: 'Supply requests', icon: <Package className="w-4 h-4" /> },
+    { text: 'Inspections', icon: <ClipboardCheck className="w-4 h-4" /> }
   ];
 
   const expertFeatures = [
-    'Everything included in Foundation',
-    'Advanced payroll integrations',
-    'API usage',
-    'Equipment management',
-    'Video and picture task training',
-    'White-labeled customer portal',
-    'Public surveys',
-    'Revenue and cost reporting'
+    { text: <span className="text-xs">Everything included in <span className="font-semibold">Foundation</span> plus...</span>, hideCheck: true },
+    { text: 'Advanced payroll integrations', icon: <Landmark className="w-4 h-4" /> },
+    { text: 'API usage', icon: <Code className="w-4 h-4" /> },
+    { text: 'Equipment management', icon: <Wrench className="w-4 h-4" /> },
+    { text: 'Video and picture task training', icon: <Video className="w-4 h-4" /> },
+    { text: 'White-labeled customer portal', icon: <Layout className="w-4 h-4" /> },
+    { text: 'Public surveys', icon: <ClipboardList className="w-4 h-4" /> },
+    { text: 'Revenue and cost reporting', icon: <PieChart className="w-4 h-4" /> }
   ];
 
   return (
@@ -124,7 +138,7 @@ function App() {
           }
           features={expertFeatures}
           isDark
-          buttonText="Contact Sales"
+          buttonText="Book a demo"
         />
       </div>
       </div>
