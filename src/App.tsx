@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Tabs } from '@base-ui/react';
 import { Navbar } from './components/Navbar';
 import { PricingCard } from './components/PricingCard';
+import { FAQ } from './components/FAQ';
 import { 
   Clock, 
   AlertCircle, 
@@ -113,7 +114,7 @@ function App() {
         </div>
       </div>
 
-      <div className="w-full flex flex-col md:flex-row items-stretch justify-center gap-8 max-w-7xl pt-4">
+      <div className="w-full flex flex-col md:flex-row items-stretch justify-center gap-8 max-w-7xl pt-4 mb-20">
         <PricingCard
           title="Foundation"
           monthlyPrice="125"
@@ -141,6 +142,10 @@ function App() {
           buttonText="Book a demo"
         />
       </div>
+
+      {/* FAQ Section */}
+      <FAQ />
+      
       </div>
     </div>
   );

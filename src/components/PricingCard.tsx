@@ -36,7 +36,7 @@ export function PricingCard({
   buttonText = 'Get Started',
 }: PricingCardProps) {
   return (
-    <div className={`relative flex flex-col w-full md:w-[25%] min-w-[280px] p-8 rounded-3xl transition-all duration-300 transform hover:-translate-y-1
+    <div className={`relative flex flex-col w-full md:w-[25%] min-w-[280px] p-8 rounded-3xl
       ${isDark ? 'bg-slate-900 text-white border-transparent shadow-[0_20px_50px_rgba(15,23,42,0.3)] z-10 md:scale-105' 
                : 'bg-white text-slate-900 border border-slate-200 shadow-xl shadow-slate-200/50'}`}>
 
