@@ -1,7 +1,7 @@
 import React from 'react';
-import { Check } from 'lucide-react';
+import { Check } from '@phosphor-icons/react';
 // Basic Base UI import - assuming v1 structural components if needed.
-// However, since it is headless, we can also just style a generic button if Base isn't strictly requested for primitive buttons, 
+// However, since it is headless, we can also just style a generic button if Base isn't strictly requested for primitive buttons,
 // but the user said "use Base UI as our base set of components".
 import { Button } from '@base-ui/react';
 
@@ -36,9 +36,18 @@ export function PricingCard({
   buttonText = 'Get Started',
 }: PricingCardProps) {
   return (
-    <div className={`relative flex flex-col w-full md:w-[25%] min-w-[280px] p-8 rounded-3xl
-      ${isDark ? 'bg-slate-900 text-white border-transparent shadow-[0_20px_50px_rgba(15,23,42,0.3)] z-10 md:scale-105' 
-               : 'bg-white text-slate-900 border border-slate-200 shadow-xl shadow-slate-200/50'}`}>
+    <div
+      className={`relative flex flex-col h-full w-full p-8 rounded-3xl overflow-hidden group
+        ${isDark ? 'bg-slate-900 text-white border-transparent shadow-[0_20px_50px_rgba(15,23,42,0.3)] z-10'
+                 : 'bg-white text-slate-900 border border-slate-200 shadow-xl shadow-slate-200/50'}`}
+    >
+
+      {/* Shimmer effect for dark/expert card - animates on hover, snaps back instantly on leave */}
+      {isDark && (
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform ease-out duration-0 group-hover:duration-1000 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12" />
+        </div>
+      )}
 
       <div className="mb-6 flex items-center justify-between">
         <div>
@@ -66,7 +75,7 @@ export function PricingCard({
         {features.map((feature, idx) => (
           <li key={idx} className="flex items-start">
             {!feature.hideCheck && (
-              <Check className={`flex-shrink-0 w-5 h-5 mr-3 mt-0.5 ${isDark ? 'text-emerald-400' : 'text-emerald-500'}`} />
+              <Check size={20} weight="bold" className={`flex-shrink-0 mr-3 mt-0.5 ${isDark ? 'text-emerald-400' : 'text-emerald-500'}`} />
             )}
             {feature.icon && (
               <div className={`mr-2 mt-0.5 flex-shrink-0 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>

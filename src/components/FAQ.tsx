@@ -1,5 +1,5 @@
 import { Accordion } from '@base-ui/react';
-import { ChevronDown } from 'lucide-react';
+import { CaretDown } from '@phosphor-icons/react';
 
 const faqs = [
   { question: "Do you offer a free trial?", answer: "Yes, you can use your own, fully-featured account for free for 14 days." },
@@ -32,7 +32,7 @@ export function FAQ() {
             <Accordion.Header className="flex">
               <Accordion.Trigger className="flex flex-1 items-center justify-between py-5 px-6 text-left text-lg font-medium text-slate-900 transition-colors duration-200 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-inset group hover:text-emerald-700">
                 {faq.question}
-                <ChevronDown className="h-5 w-5 text-slate-500 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] group-data-[panel-open]:rotate-180 group-data-[panel-open]:text-emerald-600 motion-reduce:transition-none" />
+                <CaretDown size={20} weight="regular" className="text-slate-500 transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] group-data-[panel-open]:rotate-180 group-data-[panel-open]:text-emerald-600 motion-reduce:transition-none" />
               </Accordion.Trigger>
             </Accordion.Header>
             <Accordion.Panel className="overflow-hidden h-[var(--accordion-panel-height)] opacity-100 transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] data-[ending-style]:h-0 data-[ending-style]:opacity-0 data-[starting-style]:h-0 data-[starting-style]:opacity-0 motion-reduce:transition-none">

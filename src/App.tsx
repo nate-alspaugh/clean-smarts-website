@@ -5,20 +5,21 @@ import { Tabs } from '@base-ui/react';
 import { Navbar } from './components/Navbar';
 import { PricingCard } from './components/PricingCard';
 import { FAQ } from './components/FAQ';
-import { 
-  Clock, 
-  AlertCircle, 
-  MessageSquare, 
-  Calendar, 
-  Package, 
-  ClipboardCheck,
-  Landmark,
-  Code,  Wrench, 
-  Video, 
-  Layout, 
-  ClipboardList, 
-  PieChart 
-} from 'lucide-react';
+import {
+  Clock,
+  WarningCircle,
+  ChatCenteredText,
+  Calendar,
+  Package,
+  ClipboardText,
+  Bank,
+  Code,
+  SprayBottle,
+  VideoCamera,
+  Layout,
+  ListChecks,
+  ChartPie
+} from '@phosphor-icons/react';
 
 function App() {
   const [isYearly, setIsYearly] = useState(false);
@@ -50,23 +51,23 @@ function App() {
     };
   }, [isYearly]);
   const foundationFeatures = [
-    { text: 'Time tracking', icon: <Clock className="w-4 h-4" /> },
-    { text: 'Issue reporting', icon: <AlertCircle className="w-4 h-4" /> },
-    { text: 'Messaging', icon: <MessageSquare className="w-4 h-4" /> },
-    { text: 'Scheduling', icon: <Calendar className="w-4 h-4" /> },
-    { text: 'Supply requests', icon: <Package className="w-4 h-4" /> },
-    { text: 'Inspections', icon: <ClipboardCheck className="w-4 h-4" /> }
+    { text: 'Time tracking', icon: <Clock size={16} weight="regular" /> },
+    { text: 'Issue reporting', icon: <WarningCircle size={16} weight="regular" /> },
+    { text: 'Messaging', icon: <ChatCenteredText size={16} weight="regular" /> },
+    { text: 'Scheduling', icon: <Calendar size={16} weight="regular" /> },
+    { text: 'Supply requests', icon: <Package size={16} weight="regular" /> },
+    { text: 'Inspections', icon: <ClipboardText size={16} weight="regular" /> }
   ];
 
   const expertFeatures = [
     { text: <span className="text-xs">Everything included in <span className="font-semibold">Foundation</span> plus...</span>, hideCheck: true },
-    { text: 'Advanced payroll integrations', icon: <Landmark className="w-4 h-4" /> },
-    { text: 'API usage', icon: <Code className="w-4 h-4" /> },
-    { text: 'Equipment management', icon: <Wrench className="w-4 h-4" /> },
-    { text: 'Video and picture task training', icon: <Video className="w-4 h-4" /> },
-    { text: 'White-labeled customer portal', icon: <Layout className="w-4 h-4" /> },
-    { text: 'Public surveys', icon: <ClipboardList className="w-4 h-4" /> },
-    { text: 'Revenue and cost reporting', icon: <PieChart className="w-4 h-4" /> }
+    { text: 'Advanced payroll integrations', icon: <Bank size={16} weight="regular" /> },
+    { text: 'API usage', icon: <Code size={16} weight="regular" /> },
+    { text: 'Equipment management', icon: <SprayBottle size={16} weight="regular" /> },
+    { text: 'Video and picture task training', icon: <VideoCamera size={16} weight="regular" /> },
+    { text: 'White-labeled customer portal', icon: <Layout size={16} weight="regular" /> },
+    { text: 'Public surveys', icon: <ListChecks size={16} weight="regular" /> },
+    { text: 'Revenue and cost reporting', icon: <ChartPie size={16} weight="regular" /> }
   ];
 
   return (
@@ -114,7 +115,7 @@ function App() {
         </div>
       </div>
 
-      <div className="w-full flex flex-col md:flex-row items-stretch justify-center gap-8 max-w-7xl pt-4 mb-20">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 items-stretch justify-center gap-8 max-w-4xl pt-4 mb-20">
         <PricingCard
           title="Foundation"
           monthlyPrice="125"
