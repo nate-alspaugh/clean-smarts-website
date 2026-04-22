@@ -71,19 +71,42 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
+    <div className="min-h-screen bg-white flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
       <Navbar />
-      <div className="flex-1 flex flex-col items-center justify-center py-20 px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mb-16">
+      <div
+        className="relative overflow-hidden flex flex-col items-center py-20 px-4 sm:px-6 lg:px-8"
+        style={{
+          backgroundColor: '#DDE9FF',
+          backgroundImage: 'linear-gradient(to bottom, #fff 0%, #fff 20%, #EEF8FF 60%, #DDE9FF 100%)',
+          backgroundSize: '100% 85vh',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(15, 23, 42, 0.07) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(15, 23, 42, 0.07) 1px, transparent 1px)
+            `,
+            backgroundSize: '140px 140px',
+            WebkitMaskImage:
+              'radial-gradient(ellipse 70% 70% at 50% 50%, black 35%, transparent 100%)',
+            maskImage:
+              'radial-gradient(ellipse 70% 70% at 50% 50%, black 35%, transparent 100%)',
+          }}
+        />
+        <div className="relative text-center max-w-2xl mb-16">
           <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight sm:text-5xl border-b border-transparent">
-          Pricing
+          Choose your plan
         </h1>
         <p className="mt-5 text-xl text-slate-500 leading-relaxed">
           Save up to <span className="font-semibold text-emerald-600">$540 per month</span> by eliminating redundant software costs.
         </p>
 
         {/* Global Toggle using Base UI Tabs */}
-        <div className="mt-8 mb-4 inline-flex items-center p-1 bg-slate-200/60 rounded-full shadow-inner text-sm font-semibold text-slate-700">
+        <div className="mt-8 mb-4 inline-flex items-center p-1 bg-slate-200/60 rounded-full text-sm font-semibold text-slate-700">
           <Tabs.Root 
             value={isYearly ? "yearly" : "monthly"} 
             onValueChange={(val) => setIsYearly(val === "yearly")}
@@ -91,7 +114,7 @@ function App() {
           >
             {/* Sliding Pill Background */}
             <div 
-              className="absolute shrink-0 bg-white shadow-md rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 h-[36px]"
+              className="absolute shrink-0 bg-white rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 h-[36px]"
               style={{ left: pillStyle.left, width: pillStyle.width }}
             />
 
@@ -115,39 +138,38 @@ function App() {
         </div>
       </div>
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 items-stretch justify-center gap-8 max-w-4xl pt-4 mb-20">
-        <PricingCard
-          title="Foundation"
-          monthlyPrice="125"
-          yearlyPrice="100"
-          isYearly={isYearly}
-          priceModifier="+$6 per additional user per month"
-          description="Maximum 100 users."
-          features={foundationFeatures}
-          buttonText="Book a demo"
-        />
-        
-        <PricingCard
-          title="Expert"
-          monthlyPrice="200"
-          yearlyPrice="160"
-          isYearly={isYearly}
-          priceModifier="+$8 per additional user per month"
-          description={
-            <span>
-              More than 300 users? <a href="#" className="underline hover:text-white transition-colors">Contact us</a> for a quote.
-            </span>
-          }
-          features={expertFeatures}
-          isDark
-          buttonText="Book a demo"
-        />
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 items-stretch justify-center gap-8 max-w-4xl pt-10">
+          <PricingCard
+            title="Foundation"
+            monthlyPrice="125"
+            yearlyPrice="100"
+            isYearly={isYearly}
+            priceModifier="+$6 per additional user per month"
+            description="Maximum 100 users."
+            features={foundationFeatures}
+            buttonText="Book a demo"
+          />
+
+          <PricingCard
+            title="Expert"
+            monthlyPrice="200"
+            yearlyPrice="160"
+            isYearly={isYearly}
+            priceModifier="+$8 per additional user per month"
+            description={
+              <span>
+                More than 300 users? <a href="#" className="underline hover:text-slate-900 transition-colors">Contact us</a> for a quote.
+              </span>
+            }
+            features={expertFeatures}
+            badge="Best Value"
+            primaryButton
+            buttonText="Book a demo"
+          />
+        </div>
       </div>
 
-      {/* FAQ Section */}
       <FAQ />
-      
-      </div>
     </div>
   );
 }
