@@ -20,6 +20,8 @@ export interface PricingCardProps {
   description: React.ReactNode;
   features: PricingFeature[];
   isDark?: boolean;
+  badge?: string;
+  primaryButton?: boolean;
   buttonText?: string;
   buttonUrl?: string;
 }
@@ -33,14 +35,24 @@ export function PricingCard({
   description,
   features,
   isDark,
+  badge,
+  primaryButton,
   buttonText = 'Get Started',
 }: PricingCardProps) {
   return (
-    <div
-      className={`relative flex flex-col h-full w-full p-8 rounded-3xl overflow-hidden group
-        ${isDark ? 'bg-slate-900 text-white border-transparent shadow-[0_20px_50px_rgba(15,23,42,0.3)] z-10'
-                 : 'bg-white text-slate-900 border border-slate-200 shadow-xl shadow-slate-200/50'}`}
-    >
+    <div className="relative h-full w-full">
+      {badge && (
+        <div className="absolute left-0 right-0 -top-9 h-20 bg-blue-600 rounded-3xl z-0 shadow-lg shadow-blue-600/30 flex items-start justify-center pt-2.5 pointer-events-none">
+          <span className="text-white text-xs font-bold tracking-[0.15em] uppercase">
+            {badge}
+          </span>
+        </div>
+      )}
+      <div
+        className={`relative z-10 flex flex-col h-full w-full p-8 rounded-3xl overflow-hidden group
+          ${isDark ? 'bg-slate-900 text-white border-transparent shadow-[0_20px_50px_rgba(15,23,42,0.3)]'
+                   : 'bg-white text-slate-900 border border-slate-200 shadow-xl shadow-slate-200/50'}`}
+      >
 
       {/* Shimmer effect for dark/expert card - animates on hover, snaps back instantly on leave */}
       {isDark && (
@@ -89,13 +101,14 @@ export function PricingCard({
 
       <Button
         className={`w-full py-3.5 px-4 rounded-xl font-semibold text-sm transition-all duration-200 shadow-sm ${
-          isDark
+          isDark || primaryButton
             ? 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md hover:shadow-blue-600/20 active:bg-blue-800'
             : 'bg-blue-50 text-blue-700 hover:bg-blue-100 active:bg-blue-200'
         }`}
       >
         {buttonText}
       </Button>
+      </div>
     </div>
   );
 }
