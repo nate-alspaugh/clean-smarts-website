@@ -12,7 +12,6 @@ import {
   Calendar,
   Package,
   ClipboardText,
-  Bank,
   Code,
   SprayBottle,
   VideoCamera,
@@ -23,6 +22,8 @@ import {
 
 function App() {
   const [isYearly, setIsYearly] = useState(false);
+  const [foundationPayroll, setFoundationPayroll] = useState(false);
+  const [expertPayroll, setExpertPayroll] = useState(false);
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 });
   
   const monthlyRef = useRef<HTMLButtonElement>(null);
@@ -60,8 +61,7 @@ function App() {
   ];
 
   const expertFeatures = [
-    { text: <span className="text-xs">Everything included in <span className="font-semibold">Foundation</span> plus...</span>, hideCheck: true },
-    { text: 'Advanced payroll integrations', icon: <Bank size={16} weight="regular" /> },
+    { text: <span className="text-xs text-slate-900">Everything included in <span className="font-semibold">Foundation</span> plus...</span>, hideCheck: true },
     { text: 'API usage', icon: <Code size={16} weight="regular" /> },
     { text: 'Equipment management', icon: <SprayBottle size={16} weight="regular" /> },
     { text: 'Video and picture task training', icon: <VideoCamera size={16} weight="regular" /> },
@@ -97,7 +97,7 @@ function App() {
               'radial-gradient(ellipse 70% 70% at 50% 50%, black 35%, transparent 100%)',
           }}
         />
-        <div className="relative text-center max-w-2xl mb-16">
+        <div className="relative text-center max-w-2xl mb-8">
           <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight sm:text-5xl border-b border-transparent">
           Choose your plan
         </h1>
@@ -148,6 +148,10 @@ function App() {
             description="Maximum 100 users."
             features={foundationFeatures}
             buttonText="Book a demo"
+            payrollEnabled={foundationPayroll}
+            onPayrollChange={setFoundationPayroll}
+            payrollMonthlyAddOn={70}
+            payrollYearlyAddOn={56}
           />
 
           <PricingCard
@@ -165,6 +169,10 @@ function App() {
             badge="Best Value"
             primaryButton
             buttonText="Book a demo"
+            payrollEnabled={expertPayroll}
+            onPayrollChange={setExpertPayroll}
+            payrollMonthlyAddOn={70}
+            payrollYearlyAddOn={56}
           />
         </div>
       </div>

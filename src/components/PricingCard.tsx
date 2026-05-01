@@ -1,9 +1,7 @@
 import React from 'react';
-import { Check } from '@phosphor-icons/react';
-// Basic Base UI import - assuming v1 structural components if needed.
-// However, since it is headless, we can also just style a generic button if Base isn't strictly requested for primitive buttons,
-// but the user said "use Base UI as our base set of components".
-import { Button } from '@base-ui/react';
+import { Bank, Check } from '@phosphor-icons/react';
+import { Button, Switch } from '@base-ui/react';
+import { RollingNumber } from './RollingNumber';
 
 export type PricingFeature = {
   text: React.ReactNode;
@@ -24,6 +22,10 @@ export interface PricingCardProps {
   primaryButton?: boolean;
   buttonText?: string;
   buttonUrl?: string;
+  payrollEnabled?: boolean;
+  onPayrollChange?: (val: boolean) => void;
+  payrollMonthlyAddOn?: number;
+  payrollYearlyAddOn?: number;
 }
 
 export function PricingCard({
@@ -38,7 +40,14 @@ export function PricingCard({
   badge,
   primaryButton,
   buttonText = 'Get Started',
+  payrollEnabled = false,
+  onPayrollChange,
+  payrollMonthlyAddOn = 0,
+  payrollYearlyAddOn = 0,
 }: PricingCardProps) {
+  const basePrice = Number(isYearly ? yearlyPrice : monthlyPrice);
+  const currentAddOn = isYearly ? payrollYearlyAddOn : payrollMonthlyAddOn;
+  const displayedPrice = basePrice + (payrollEnabled ? currentAddOn : 0);
   return (
     <div className="relative h-full w-full">
       {badge && (
@@ -69,10 +78,15 @@ export function PricingCard({
 
       <div className={`mb-6 pb-6 border-b ${isDark ? 'border-slate-800' : 'border-slate-100'}`}>
         <div className="flex items-end gap-2">
-          <div className={`text-5xl font-extrabold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
-            ${isYearly ? yearlyPrice : monthlyPrice}
+          <div className={`text-5xl font-extrabold tracking-tight tabular-nums ${isDark ? 'text-white' : 'text-slate-900'}`}>
+            <RollingNumber value={displayedPrice} />
           </div>
           <p className={`mb-2 text-sm font-medium ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>/ mo</p>
+          {payrollEnabled && currentAddOn > 0 && (
+            <p className={`mb-2 ml-4 text-xs font-medium ${isDark ? 'text-blue-300' : 'text-blue-700'}`}>
+              + payroll ${currentAddOn}/mo
+            </p>
+          )}
         </div>
         <p className={`mt-2 text-xs font-medium ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
           for first 10 users (billed {isYearly ? 'annually' : 'monthly'})
@@ -98,6 +112,40 @@ export function PricingCard({
           </li>
         ))}
       </ul>
+
+      {onPayrollChange && (
+        <div
+          className={`mb-5 pt-5 flex items-center justify-between gap-4 border-t ${
+            isDark ? 'border-slate-800' : 'border-slate-100'
+          }`}
+        >
+          <div className="flex items-start gap-2.5 min-w-0">
+            <div className={`mt-0.5 flex-shrink-0 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+              <Bank size={20} weight="regular" />
+            </div>
+            <div className="min-w-0">
+              <p className={`text-sm font-semibold leading-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                Add payroll integration
+              </p>
+              <p className={`mt-0.5 text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+                +${currentAddOn}/mo
+              </p>
+            </div>
+          </div>
+          <Switch.Root
+            checked={payrollEnabled}
+            onCheckedChange={(val) => onPayrollChange(val)}
+            aria-label="Add payroll integration"
+            className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer items-center rounded-full p-0 outline-none transition-colors duration-200 ease-in-out focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 ${
+              isDark ? 'focus-visible:ring-offset-slate-900' : 'focus-visible:ring-offset-white'
+            } data-[checked]:bg-blue-600 ${
+              isDark ? 'data-[unchecked]:bg-slate-700' : 'data-[unchecked]:bg-slate-200'
+            }`}
+          >
+            <Switch.Thumb className="block h-5 w-5 rounded-full bg-white shadow-sm transition-transform duration-200 ease-in-out data-[checked]:translate-x-[22px] data-[unchecked]:translate-x-0.5" />
+          </Switch.Root>
+        </div>
+      )}
 
       <Button
         className={`w-full py-3.5 px-4 rounded-xl font-semibold text-sm transition-all duration-200 shadow-sm ${
