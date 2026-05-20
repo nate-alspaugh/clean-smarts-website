@@ -71,7 +71,7 @@ export const HomeNoCardPage = () => {
                 borderRadius: `${glass.borderRadius}px`,
                 background: `linear-gradient(${glass.gradientAngle}deg, rgba(255,255,255,${glass.fillOpacity1}) 0%, rgba(255,255,255,${glass.fillOpacity2}) 50%, rgba(255,255,255,${glass.fillOpacity3}) 100%)`,
                 backdropFilter: `blur(${glass.blur}px) saturate(${glass.saturate}%)`,
-                WebKitBackdropFilter: `blur(${glass.blur}px) saturate(${glass.saturate}%)`,
+                WebkitBackdropFilter: `blur(${glass.blur}px) saturate(${glass.saturate}%)`,
                 border: `1px solid rgba(255,255,255,${glass.borderOpacity})`,
                 boxShadow: `0 8px ${glass.shadow1Blur}px rgba(31, 58, 112, ${glass.shadow1Opacity}), 0 2px ${glass.shadow2Blur}px rgba(31, 58, 112, ${glass.shadow2Opacity}), inset 0 1px 0 rgba(255,255,255,${glass.insetTopOpacity}), inset 0 -1px 0 rgba(255,255,255,${glass.insetBottomOpacity})`,
               }}
