@@ -1,26 +1,30 @@
 
 
 import { CaretDown, List } from '@phosphor-icons/react';
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
   return (
-    <nav className="w-full bg-white text-slate-900 border-b border-slate-100 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+    <nav
+      className="w-full bg-white text-slate-900 border-b border-slate-100 py-4 flex items-center justify-between sticky top-0 z-50"
+      style={{ paddingInline: 'var(--grid-padding)' }}
+    >
       <div className="flex items-center gap-10">
-        <a href="#" className="flex-shrink-0">
+        <Link to="/" className="flex-shrink-0">
           <img
             src="https://cdn.prod.website-files.com/61790b76ca74ffddd06dfc38/672bb9cbe8f852e52e00ff62_Logo%20white.svg"
             alt="Clean Smarts Logo"
             className="h-6 w-auto"
             style={{ filter: 'brightness(0)' }}
           />
-        </a>
+        </Link>
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
           <a href="#" className="hover:text-emerald-600 transition-colors flex items-center gap-1">
             Features
             <CaretDown size={16} weight="regular" className="opacity-70" />
           </a>
-          <a href="#" className="hover:text-emerald-600 transition-colors">Pricing</a>
+          <Link to="/pricing" className="hover:text-emerald-600 transition-colors">Pricing</Link>
           <a href="#" className="hover:text-emerald-600 transition-colors">Getting Started</a>
           <a href="#" className="hover:text-emerald-600 transition-colors">FAQ</a>
         </div>
