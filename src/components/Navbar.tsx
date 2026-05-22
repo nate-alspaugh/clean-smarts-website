@@ -1,48 +1,45 @@
-
-
-import { CaretDown, List } from '@phosphor-icons/react';
+import { ArrowRight, List } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
   return (
     <nav
-      className="w-full bg-white text-slate-900 border-b border-slate-100 py-4 flex items-center justify-between sticky top-0 z-50"
-      style={{ paddingInline: 'var(--grid-padding)' }}
+      className="w-full bg-white text-slate-900 rounded-2xl border border-slate-200/80 py-3 pl-5 pr-3 flex items-center justify-between shadow-sm"
     >
-      <div className="flex items-center gap-10">
-        <Link to="/" className="flex-shrink-0">
-          <img
-            src="https://cdn.prod.website-files.com/61790b76ca74ffddd06dfc38/672bb9cbe8f852e52e00ff62_Logo%20white.svg"
-            alt="Clean Smarts Logo"
-            className="h-6 w-auto"
-            style={{ filter: 'brightness(0)' }}
-          />
-        </Link>
+      <Link to="/" className="flex-shrink-0">
+        <img
+          src="https://cdn.prod.website-files.com/61790b76ca74ffddd06dfc38/672bb9cbe8f852e52e00ff62_Logo%20white.svg"
+          alt="Clean Smarts Logo"
+          className="h-6 w-auto"
+          style={{ filter: 'brightness(0)' }}
+        />
+      </Link>
 
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-700">
-          <a href="#" className="hover:text-emerald-600 transition-colors flex items-center gap-1">
-            Features
-            <CaretDown size={16} weight="regular" className="opacity-70" />
-          </a>
-          <Link to="/pricing" className="hover:text-emerald-600 transition-colors">Pricing</Link>
-          <a href="#" className="hover:text-emerald-600 transition-colors">Getting Started</a>
-          <a href="#" className="hover:text-emerald-600 transition-colors">FAQ</a>
-        </div>
+      <div className="hidden md:flex items-center gap-10 text-sm font-medium text-slate-900">
+        <a href="#" className="hover:text-blue-600 transition-colors">Features</a>
+        <Link to="/pricing" className="hover:text-blue-600 transition-colors">Pricing</Link>
+        <a href="#" className="hover:text-blue-600 transition-colors">Getting Started</a>
+        <a href="#" className="hover:text-blue-600 transition-colors">FAQ</a>
       </div>
 
-      <div className="hidden md:flex items-center gap-6 text-sm font-medium">
-        <a href="#" className="text-slate-700 hover:text-emerald-600 transition-colors">Login</a>
+      <div className="hidden md:flex items-center gap-2 text-sm font-medium">
         <a
           href="#"
-          className="bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md hover:shadow-blue-600/20 active:bg-blue-800 px-5 py-2.5 rounded-md transition-all"
+          className="inline-flex items-center gap-1.5 text-slate-900 hover:text-blue-600 transition-colors px-3 py-2"
         >
-          Book a Demo
+          Login
+          <ArrowRight size={16} weight="bold" />
+        </a>
+        <a
+          href="#"
+          className="inline-flex items-center justify-center bg-blue-100 text-blue-700 hover:bg-blue-200 active:bg-blue-300 px-5 py-2.5 rounded-md transition-all font-medium"
+        >
+          Book a demo
         </a>
       </div>
 
-        {/* Mobile menu button */}
       <div className="md:hidden flex items-center">
-        <button className="text-slate-900 hover:text-emerald-600">
+        <button className="text-slate-900 hover:text-blue-600" aria-label="Open menu">
           <List size={24} weight="regular" />
         </button>
       </div>

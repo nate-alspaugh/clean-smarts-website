@@ -25,7 +25,7 @@ export function GridOverlay({ visible }: GridOverlayProps) {
         {Array.from({ length: 12 }).map((_, i) => (
           <div
             key={i}
-            className={`relative h-full ${i >= 6 ? 'hidden md:block' : ''}`}
+            className="relative h-full"
             style={COLUMN_STYLE}
           >
             <span className="absolute left-1/2 top-2 -translate-x-1/2 rounded-sm bg-pink-500/15 px-1.5 py-0.5 text-[10px] font-semibold tabular-nums text-pink-700/80">

@@ -1,32 +1,78 @@
 import { Navbar } from '../components/Navbar';
 import { GridRow, GridCol } from '../components/Grid';
 import { Star } from '@phosphor-icons/react';
-import { defaultGlass } from '../components/GlassControls';
+import { LogoMarquee } from '../components/LogoMarquee';
+import { FeatureRow } from '../components/FeatureRow';
+import heroFrame from '../assets/hero-frame.png';
+import timeTrackingImage from '../assets/features/time-tracking.png';
+import issueTrackingImage from '../assets/features/issue-tracking.png';
+import supplyManagementImage from '../assets/features/supply-management.png';
+import schedulingImage from '../assets/features/scheduling.png';
+import inspectionsImage from '../assets/features/inspections.png';
+import messagingImage from '../assets/features/messaging.png';
+
+const features = [
+  {
+    category: 'Time tracking',
+    description:
+      'Accurately track employee hours and eliminate payroll errors with multiple clock-in options and location-based check ins.',
+    image: timeTrackingImage,
+  },
+  {
+    category: 'Issue Tracking',
+    description:
+      'Build trust with customers by logging and tracking issues with photos & videos, reducing phone calls and emails with automated notifications.',
+    image: issueTrackingImage,
+  },
+  {
+    category: 'Supply Management',
+    description:
+      'Keep cleaning teams equipped & reduce supply costs by tracking inventory, streamlining reorders, and sharing usage reports with customers.',
+    image: supplyManagementImage,
+  },
+  {
+    category: 'Scheduling',
+    description:
+      'Quickly reschedule jobs and fill in for sick employees with our drag-and-drop scheduling and real-time team notifications.',
+    image: schedulingImage,
+  },
+  {
+    category: 'Inspections',
+    description:
+      'Ensure quality and improve customer relationships by scheduling inspections, assigning weighted scoring, and easily logging & resolving issues.',
+    image: inspectionsImage,
+  },
+  {
+    category: 'Messaging',
+    description:
+      'Keep in touch without sharing personal numbers. Provide status updates, answer questions, and collect feedback through group or direct messaging.',
+    image: messagingImage,
+  },
+];
 
 export const HomePage = () => {
-  const glass = defaultGlass;
   return (
     <div className="min-h-screen bg-white flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
-      <Navbar />
+      <main className="pb-48">
+        <div
+          className="relative pt-16"
+          style={{ paddingInline: 'calc(var(--grid-padding) / 2)' }}
+        >
+          <header
+            className="sticky top-5 z-50"
+            style={{ paddingInline: 'calc(var(--grid-padding) / 2)' }}
+          >
+            <Navbar />
+          </header>
 
-      <main className="py-6">
-        <GridRow>
-          <GridCol start={1} span={12}>
-            <section
-              className="relative overflow-hidden rounded-2xl min-h-[80vh] py-20 lg:py-28"
-              style={{
-                border: '1px solid transparent',
-                backgroundImage: `
-                  linear-gradient(to bottom, #fff 0%, #fff 10%, #EEF8FF 40%, #DDE9FF 75%),
-                  linear-gradient(#DDE9FF, #DDE9FF),
-                  linear-gradient(to bottom, #e5edfc, #f4f7fe)
-                `,
-                backgroundSize: '100% 85vh, 100% 100%, 100% 100%',
-                backgroundRepeat: 'no-repeat, no-repeat, no-repeat',
-                backgroundOrigin: 'padding-box, padding-box, border-box',
-                backgroundClip: 'padding-box, padding-box, border-box',
-              }}
-            >
+          <section
+            className="relative overflow-hidden rounded-2xl -mt-[98px] pt-40 lg:pt-44"
+            style={{
+              backgroundColor: '#ffffff',
+              backgroundImage:
+                'linear-gradient(to bottom, #F7F9FC 0%, #EEF8FF 43.77%, #E4ECFC 100%)',
+            }}
+          >
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0"
@@ -42,78 +88,86 @@ export const HomePage = () => {
                     'radial-gradient(ellipse 70% 70% at 50% 50%, black 35%, transparent 100%)',
                 }}
               />
+
               <GridRow padding={false} className="relative">
-                <GridCol start={2} span={4}>
-                  <h1 className="text-5xl md:text-[3.5rem] font-black text-slate-900 tracking-tight leading-[1.05]">
-                    Software to save cleaning teams time and money
-                  </h1>
-
-                  <p className="mt-6 text-lg md:text-xl text-slate-500 leading-relaxed">
-                    Automate time tracking, simplify scheduling, and improve client communication. An all-in-one tool for your commercial cleaning company or janitorial staff.
-                  </p>
-
-                  <div className="mt-10">
-                    <a
-                      href="#"
-                      className="inline-flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md hover:shadow-blue-600/20 active:bg-blue-800 px-6 py-3 rounded-md transition-all font-medium"
-                    >
-                      Book a demo
-                    </a>
-                  </div>
-
-                  <div className="mt-6 flex items-center gap-3">
-                    <div className="flex items-center gap-0.5 text-yellow-400">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} size={14} weight="fill" />
-                      ))}
+                <GridCol start={3} span={8} mobileStart={1} mobileSpan={6}>
+                  <div className="flex flex-col items-center text-center">
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-0.5 text-yellow-400">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star key={i} size={14} weight="fill" />
+                        ))}
+                      </div>
+                      <span className="text-xs text-slate-900">
+                        4.8 rating on the Apple App Store (1,200+ reviews)
+                      </span>
                     </div>
-                    <span className="text-xs text-slate-900">
-                      4.8 rating on the Apple App Store (1,200+ reviews)
-                    </span>
-                  </div>
-                </GridCol>
 
-                <GridCol start={8} span={3}>
-                  <div
-                    className="relative aspect-square overflow-hidden"
-                    style={{
-                      borderRadius: `${glass.borderRadius}px`,
-                      background: `linear-gradient(${glass.gradientAngle}deg, rgba(255,255,255,${glass.fillOpacity1}) 0%, rgba(255,255,255,${glass.fillOpacity2}) 50%, rgba(255,255,255,${glass.fillOpacity3}) 100%)`,
-                      backdropFilter: `blur(${glass.blur}px) saturate(${glass.saturate}%)`,
-                      WebkitBackdropFilter: `blur(${glass.blur}px) saturate(${glass.saturate}%)`,
-                      border: `1px solid rgba(255,255,255,${glass.borderOpacity})`,
-                      boxShadow: `0 8px ${glass.shadow1Blur}px rgba(31, 58, 112, ${glass.shadow1Opacity}), 0 2px ${glass.shadow2Blur}px rgba(31, 58, 112, ${glass.shadow2Opacity}), inset 0 1px 0 rgba(255,255,255,${glass.insetTopOpacity}), inset 0 -1px 0 rgba(255,255,255,${glass.insetBottomOpacity})`,
-                    }}
-                  >
-                    <div
-                      aria-hidden="true"
-                      className="pointer-events-none absolute inset-0"
-                      style={{
-                        background: `radial-gradient(ellipse 80% 60% at 30% 0%, rgba(255,255,255,${glass.sheenOpacity}), transparent 60%)`,
-                      }}
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -top-1/4 -right-1/4 w-2/3 h-2/3 rounded-full"
-                      style={{
-                        background: `radial-gradient(circle, rgba(255,255,255,${glass.orbTROpacity}), transparent 70%)`,
-                        filter: `blur(${glass.orbTRBlur}px)`,
-                      }}
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -bottom-1/4 -left-1/4 w-2/3 h-2/3 rounded-full"
-                      style={{
-                        background: `radial-gradient(circle, rgba(255,255,255,${glass.orbBLOpacity}), transparent 70%)`,
-                        filter: `blur(${glass.orbBLBlur}px)`,
-                      }}
-                    />
+                    <h1 className="mt-6 text-5xl md:text-[3.5rem] font-black text-slate-900 tracking-tight leading-[1.05]">
+                      Software to save
+                      <br className="hidden md:inline" />{' '}
+                      <span className="text-blue-600">cleaning teams</span> time &amp; money
+                    </h1>
+
+                    <p className="mt-6 max-w-2xl text-lg md:text-xl text-slate-500 leading-relaxed">
+                      Automate time tracking, simplify scheduling, and improve client
+                      communication. An all-in-one tool for your commercial cleaning company or
+                      janitorial staff.
+                    </p>
+
+                    <div className="mt-10">
+                      <a
+                        href="#"
+                        className="inline-flex items-center justify-center bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md hover:shadow-blue-600/20 active:bg-blue-800 px-6 py-3 rounded-md transition-all font-medium"
+                      >
+                        Book a demo
+                      </a>
+                    </div>
                   </div>
                 </GridCol>
               </GridRow>
-            </section>
+
+            <GridRow padding={false} className="relative mt-16 lg:mt-20">
+              <GridCol start={2} span={10} mobileStart={1} mobileSpan={6}>
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{ aspectRatio: '1312 / 547', marginBottom: '-2%' }}
+                >
+                  <img
+                    src={heroFrame}
+                    alt="Clean Smarts dashboard and mobile app preview"
+                    className="block w-full h-auto"
+                  />
+                </div>
+              </GridCol>
+            </GridRow>
+          </section>
+        </div>
+
+        <GridRow className="mt-24">
+          <GridCol start={1} span={12}>
+            <p className="text-center text-lg md:text-xl font-semibold text-slate-900">
+              Used by teams cleaning for the world's most demanding brands
+            </p>
           </GridCol>
         </GridRow>
+
+        <div className="mt-10">
+          <LogoMarquee />
+        </div>
+
+        <div className="mt-32 flex flex-col gap-32">
+          {features.map((feature, i) => (
+            <FeatureRow
+              key={feature.category}
+              category={feature.category}
+              description={feature.description}
+              image={feature.image}
+              imageAlt={`${feature.category} feature illustration`}
+              reversed={i % 2 === 1}
+            />
+          ))}
+        </div>
       </main>
     </div>
   );
