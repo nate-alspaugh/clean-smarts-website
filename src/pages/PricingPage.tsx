@@ -69,7 +69,12 @@ export const PricingPage = () => {
 
   return (
     <div className="min-h-screen bg-white flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
-      <Navbar />
+      <header
+        className="sticky top-5 z-50"
+        style={{ paddingInline: 'var(--grid-padding)' }}
+      >
+        <Navbar />
+      </header>
       <div
         className="relative overflow-hidden flex flex-col items-center py-20 px-4 sm:px-6 lg:px-8"
         style={{

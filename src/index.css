@@ -2,7 +2,44 @@
 
 @theme {
   --font-sans: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /*
+   * Explicit breakpoint widths.
+   *
+   * Each one registers a Tailwind variant in BOTH directions:
+   *   bp320:flex      → @media (min-width: 320px)
+   *   max-bp320:flex  → @media (max-width: 319.98px)
+   *
+   * Keep in sync with `BREAKPOINT_WIDTHS` in `playwright.config.ts`.
+   */
+  --breakpoint-bp320: 320px;
+  --breakpoint-bp360: 360px;
+  --breakpoint-bp375: 375px; /* iPhone SE preset */
+  --breakpoint-bp480: 480px;
+  --breakpoint-bp640: 640px;
+  --breakpoint-bp642: 642px; /* content-based */
+  --breakpoint-bp768: 768px;
+  --breakpoint-bp860: 860px; /* content-based */
+  --breakpoint-bp911: 911px; /* content-based */
+  --breakpoint-bp1024: 1024px;
+  --breakpoint-bp1100: 1100px; /* headline scaling */
+  --breakpoint-bp1200: 1200px;
+  --breakpoint-bp1300: 1300px; /* navbar/menu */
+  --breakpoint-bp1440: 1440px;
+  --breakpoint-bp1920: 1920px;
+  --breakpoint-bp2560: 2560px;
 }
+
+/*
+ * Authoring breakpoints in markup / utility CSS:
+ *   bp768:flex       → @media (min-width: 768px)
+ *   max-bp768:hidden → @media (max-width: 767.98px)
+ *
+ * Authoring breakpoints in plain CSS, use range syntax with both
+ * a min-width AND a max-width to scope styles to a single band:
+ *   @media (min-width: 768px) and (max-width: 859.98px) { … }
+ *   @media (min-width: 1300px) and (max-width: 1439.98px) { … }
+ */
 
 :root {
   --grid-cols: 6;
@@ -32,4 +69,9 @@ body {
   margin: 0;
   min-height: 100vh;
   @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }

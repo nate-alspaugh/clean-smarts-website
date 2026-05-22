@@ -3,7 +3,6 @@ import { ArrowRight } from '@phosphor-icons/react';
 
 const pages = [
   { name: 'Home', path: '/home' },
-  { name: 'Home (No Card)', path: '/home-no-card' },
   { name: 'Pricing', path: '/pricing' },
 ];
 

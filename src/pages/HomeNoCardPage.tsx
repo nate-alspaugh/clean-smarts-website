@@ -7,7 +7,12 @@ export const HomeNoCardPage = () => {
   const glass = defaultGlass;
   return (
     <div className="min-h-screen bg-white flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
-      <Navbar />
+      <header
+        className="sticky top-5 z-50"
+        style={{ paddingInline: 'var(--grid-padding)' }}
+      >
+        <Navbar />
+      </header>
 
       <div
         className="relative overflow-hidden py-28 lg:py-32"
